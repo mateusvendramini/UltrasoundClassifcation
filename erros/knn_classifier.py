@@ -5,9 +5,11 @@ Lê os datasets N_compound_maxenv dos arquivos HDF5 especificados,
 monta um DataFrame com as 16 medidas (colunas val0..val15) e a altura (height),
 separa em treino/teste/validação e treina um KNN regressor para estimar a altura.
 
+O modelo treinado (regressor + scaler) é salvo em knn_checkpoint.joblib.
+
 Uso: python knn_classifier.py
 
-Requer: numpy, pandas, h5py, scikit-learn
+Requer: numpy, pandas, h5py, scikit-learn, joblib
 """
 
 import h5py
@@ -18,6 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn import metrics
+import joblib
 
 FILES = [
     'model_compound_4_10_34_1_interface.h5',
@@ -94,7 +97,7 @@ X_val_s = scaler.transform(X_val)
 X_test_s = scaler.transform(X_test)
 
 # train KNN regressor
-knn = KNeighborsRegressor(n_neighbors=5, n_jobs=-1)
+knn = KNeighborsRegressor(n_neighbors=1, n_jobs=-1)
 knn.fit(X_train_s, y_train)
 
 # evaluate
@@ -114,5 +117,17 @@ pred_test = eval_set('Test', X_test_s, y_test)
 print('\nSample predictions (val):')
 for i in range(min(10, len(y_val))):
     print(f'  true={y_val[i]:.2f} pred={pred_val[i]:.3f} diff={pred_val[i]-y_val[i]:.3f}')
+
+# save model checkpoint
+CHECKPOINT_PATH = DATA_DIR / 'knn_checkpoint.joblib'
+checkpoint = {
+    'knn': knn,
+    'scaler': scaler,
+    'feature_names': [f'val{i}' for i in range(X.shape[1])],
+    'n_neighbors': knn.n_neighbors,
+    'n_training_samples': X_train.shape[0],
+}
+joblib.dump(checkpoint, CHECKPOINT_PATH)
+print(f'\nCheckpoint salvo em: {CHECKPOINT_PATH}')
 
 print('\nDone')

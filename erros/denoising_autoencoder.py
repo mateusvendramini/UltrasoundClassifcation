@@ -64,18 +64,18 @@ from torch.utils.data import Dataset, DataLoader
 # ---------------------------------------------------------------------------
 
 ART_FILE      = Path('artificial_20260326_220112.h5')
-CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror.joblib')
-MODEL_OUT      = Path('dae_best_262_matrizerror.pt')
+CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror_bigger.joblib')
+MODEL_OUT      = Path('dae_best_262_matrizerror_bigger.pt')
 
 # Arquitetura
-LATENT_DIM = 8
+LATENT_DIM = 12
 
 # Treino
 BATCH_SIZE  = 64
-EPOCHS      = 300 #300
+EPOCHS      = 600 #300
 LR          = 1e-3
 WEIGHT_DECAY = 1e-5
-PATIENCE    = 30        # early stopping
+PATIENCE    = 60        # early stopping
 
 # Divisão (sobre índices originais)
 TEST_FRAC = 0.15
@@ -221,17 +221,17 @@ class DenoisingAutoencoder(nn.Module):
         super().__init__()
 
         self.encoder = nn.Sequential(
-            nn.Linear(input_dim, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(input_dim, 48),
+            nn.BatchNorm1d(48),
             nn.GELU(),
-            nn.Linear(32, latent_dim),
+            nn.Linear(48, latent_dim),
         )
 
         self.decoder = nn.Sequential(
-            nn.Linear(latent_dim, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(latent_dim, 48),
+            nn.BatchNorm1d(48),
             nn.GELU(),
-            nn.Linear(32, input_dim),
+            nn.Linear(48, input_dim),
         )
 
         # Inicializa os pesos do decoder próximos de zero para que

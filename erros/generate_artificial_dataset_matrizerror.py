@@ -31,7 +31,7 @@ FILES = [
 DATA_DIR = Path('.')
 
 # Número de pontos artificiais por ponto original
-N_ARTIFICIAL = 50
+N_ARTIFICIAL = 100
 
 # Parâmetros da distribuição de ganhos (global)
 GAIN_DISTRIBUTION = 'normal'  # opções: 'normal', 'uniform', 'lognormal'

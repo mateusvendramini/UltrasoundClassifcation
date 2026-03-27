@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
 
 # Arquivos
 ARTIFICIAL_FILE = 'model_compound_4_10_104_1_interface_synthetic_apod.h5'
@@ -135,5 +136,73 @@ print(f'  Média M_art: {np.mean(all_art):.6f}')
 print(f'  Média M_exp: {np.mean(all_exp):.6f}')
 print(f'  Desvio M_art: {np.std(all_art):.6f}')
 print(f'  Desvio M_exp: {np.std(all_exp):.6f}')
+
+# Gerar heatmaps
+def create_heatmap_data(data_dict):
+    """
+    Reorganiza data_dict em uma matriz para heatmap.
+    Linhas: 16 posições
+    Colunas: alturas
+    Para cada altura, faz a média entre todos os valores de K
+    """
+    heights = sorted(data_dict.keys())
+    heatmap_data = []
+    
+    for pos in range(16):
+        row = []
+        for h in heights:
+            # Coletar todos os valores na posição 'pos' para esta altura
+            values_at_pos = []
+            for k_vals in data_dict[h].values():
+                if len(k_vals) > pos:
+                    values_at_pos.append(k_vals[pos])
+            if values_at_pos:
+                row.append(np.mean(values_at_pos))
+            else:
+                row.append(np.nan)
+        heatmap_data.append(row)
+    
+    return np.array(heatmap_data), heights
+
+print('\nGerando heatmaps...')
+
+# Gerar dados dos heatmaps
+art_heatmap, art_heights = create_heatmap_data(artificial_data)
+exp_heatmap, exp_heights = create_heatmap_data(experimental_data)
+
+# Normalizar intensidade do dataset experimental
+exp_heatmap = exp_heatmap / 500000
+
+# Criar figura com dois heatmaps lado a lado
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6))
+
+# Heatmap artificial - exibir labels a cada 5 medidas
+im1 = ax1.imshow(art_heatmap, aspect='auto', cmap='coolwarm', interpolation='nearest')
+ax1.set_xlabel('Altura (Height)', fontsize=12)
+ax1.set_ylabel('Posição (0-15)', fontsize=12)
+ax1.set_title('Dataset Artificial', fontsize=14, fontweight='bold')
+xticks_art = range(0, len(art_heights), 5)
+ax1.set_xticks(xticks_art)
+ax1.set_xticklabels([f'{art_heights[i]:.1f}' for i in xticks_art], rotation=45)
+ax1.set_yticks(range(16))
+cbar1 = plt.colorbar(im1, ax=ax1)
+cbar1.set_label('Intensidade', fontsize=10)
+
+# Heatmap experimental - exibir labels a cada 5 medidas
+im2 = ax2.imshow(exp_heatmap, aspect='auto', cmap='coolwarm', interpolation='nearest')
+ax2.set_xlabel('Altura (Height)', fontsize=12)
+ax2.set_ylabel('Posição (0-15)', fontsize=12)
+ax2.set_title('Dataset Experimental', fontsize=14, fontweight='bold')
+xticks_exp = range(0, len(exp_heights), 5)
+ax2.set_xticks(xticks_exp)
+ax2.set_xticklabels([f'{exp_heights[i]:.1f}' for i in xticks_exp], rotation=45)
+ax2.set_yticks(range(16))
+cbar2 = plt.colorbar(im2, ax=ax2)
+cbar2.set_label('Intensidade', fontsize=10)
+
+plt.tight_layout()
+plt.savefig('heatmaps_comparison.png', dpi=150, bbox_inches='tight')
+print('Heatmaps salvos em: heatmaps_comparison.png')
+plt.show()
 
 print('Done')

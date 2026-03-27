@@ -23,8 +23,9 @@ from sklearn import metrics
 import joblib
 
 FILES = [
-    'model_compound_4_10_34_1_interface.h5',
-    'model_compound_4_10_68_1_interface.h5',
+    #'model_compound_4_10_34_1_interface.h5',
+    #'model_compound_4_10_68_1_interface.h5',
+    'model_compound_4_10_104_1_interface_synthetic_apod.h5'
 ]
 
 DATA_DIR = Path('.')
@@ -119,7 +120,7 @@ for i in range(min(10, len(y_val))):
     print(f'  true={y_val[i]:.2f} pred={pred_val[i]:.3f} diff={pred_val[i]-y_val[i]:.3f}')
 
 # save model checkpoint
-CHECKPOINT_PATH = DATA_DIR / 'knn_checkpoint.joblib'
+CHECKPOINT_PATH = DATA_DIR / 'knn_checkpoint_synthetic.joblib'
 checkpoint = {
     'knn': knn,
     'scaler': scaler,

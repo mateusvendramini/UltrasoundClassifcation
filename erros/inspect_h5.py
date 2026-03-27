@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 
 DATA_DIR = Path('.')
-file_path = DATA_DIR / 'model_compound_4_10_34_1_interface.h5'
+file_path = DATA_DIR / 'model_compound_4_10_104_1_interface_synthetic_apod.h5'
 
 print(f"Inspecting: {file_path.resolve()}")
 if not file_path.exists():

@@ -63,16 +63,16 @@ from torch.utils.data import Dataset, DataLoader
 # Configuração
 # ---------------------------------------------------------------------------
 
-ART_FILE      = Path('artificial_20260223_141210.h5')
-CHECKPOINT_OUT = Path('dae_checkpoint.joblib')
-MODEL_OUT      = Path('dae_best.pt')
+ART_FILE      = Path('artificial_20260326_220112.h5')
+CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror.joblib')
+MODEL_OUT      = Path('dae_best_262_matrizerror.pt')
 
 # Arquitetura
 LATENT_DIM = 8
 
 # Treino
 BATCH_SIZE  = 64
-EPOCHS      = 300
+EPOCHS      = 300 #300
 LR          = 1e-3
 WEIGHT_DECAY = 1e-5
 PATIENCE    = 30        # early stopping

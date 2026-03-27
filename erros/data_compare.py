@@ -53,12 +53,13 @@ def load_data_from_h5(fname):
         print(f'  Alturas ({len(axis_H)}): {axis_H[:5]} ... {axis_H[-5:]}')
         print(f'  K ({len(axis_K)}): {axis_K}')
 
-        # Coletar dados por altura
+        # Coletar dados por altura e velocidade
         for hi, hval in enumerate(axis_H):
             hval_float = float(hval)
             if hval_float not in data:
-                data[hval_float] = []
+                data[hval_float] = {}
             for ki, kval in enumerate(axis_K):
+                kval_float = float(kval)
                 try:
                     vals = d[hi, 0, ki, 0, :]
                 except Exception as e:
@@ -68,7 +69,7 @@ def load_data_from_h5(fname):
                 if vals.size != 16:
                     print(f'  Aviso: esperado 16 valores, mas obteve {vals.size} em H={hi} K={ki}, pulando')
                     continue
-                data[hval_float].append((ki, vals))  # ki e vals
+                data[hval_float][kval_float] = vals
 
     return data
 
@@ -93,19 +94,17 @@ for h_exp in experimental_data:
 
     print(f'Comparando altura {h_exp} (match com {h_match})')
 
-    # Para cada K no experimental
-    for ki_exp, vals_exp in experimental_data[h_exp]:
-        # Encontrar correspondente no artificial
-        found = False
-        for ki_art, vals_art in artificial_data[h_match]:
-            if ki_art == ki_exp:
-                found = True
-                # Coletar pares
-                all_art.extend(vals_art)
-                all_exp.extend(vals_exp)
-                break
-        if not found:
-            print(f'  K={ki_exp} não encontrado para altura {h_exp} nos dados artificiais.')
+    # Para cada velocidade no experimental
+    for kval_exp, vals_exp in experimental_data[h_exp].items():
+        kval_match = round(kval_exp)
+        if kval_match not in artificial_data[h_match]:
+            print(f'  Velocidade experimental {kval_exp} (arredondada para {kval_match}) não encontrada nos dados artificiais para altura {h_exp}, pulando.')
+            continue
+
+        vals_art = artificial_data[h_match][kval_match]
+        # Coletar pares
+        all_art.extend(vals_art)
+        all_exp.extend(vals_exp)
 
 # Converter para arrays
 all_art = np.array(all_art)

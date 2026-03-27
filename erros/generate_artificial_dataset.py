@@ -25,20 +25,22 @@ from datetime import datetime
 # ---------------------------------------------------------------------------
 
 FILES = [
-    'model_compound_4_10_34_1_interface.h5',
-    'model_compound_4_10_68_1_interface.h5',
+    'model_compound_4_10_104_1_interface_synthetic_apod.h5'
 ]
 
 DATA_DIR = Path('.')
 
 # Número de pontos artificiais por ponto original
-N_ARTIFICIAL = 5
+N_ARTIFICIAL = 50
 
 # Parâmetros da distribuição de ganhos
 GAIN_DISTRIBUTION = 'normal'  # opções: 'normal', 'uniform', 'lognormal'
 GAIN_MEAN = 1.0
-GAIN_STD = 0.002
+GAIN_STD = 0.1
 
+#Média global dos ganhos: 0.947398
+#Desvio padrão global dos ganhos: 0.648466
+#Total de ganhos coletados: 1440
 
 # ---------------------------------------------------------------------------
 # Funções auxiliares
@@ -233,6 +235,25 @@ def main():
     print(f'\nDataset salvo: {out_path}')
     print(f'  measurements shape : {art_vals.shape}')
     print(f'  heights shape      : {art_heights.shape}')
+
+    # ------------------------------------------------------------------
+    # Estatísticas de distância original x artificial
+    # ------------------------------------------------------------------
+    orig_repeated = np.repeat(vals_arr, N_ARTIFICIAL, axis=0)
+    diffs = art_vals - orig_repeated
+    distances = np.linalg.norm(diffs, axis=1)
+    mean_distance = np.mean(distances)
+    std_distance = np.std(distances)
+
+    print('\nEstatísticas de distância artificial -> original:')
+    print(f'  média da distância (Euclidiana)   : {mean_distance:.6f}')
+    print(f'  desvio padrão da distância        : {std_distance:.6f}')
+
+    # salvar no HDF5 também para rastreabilidade
+    with h5py.File(out_path, 'a') as f:
+        f.attrs['mean_distance'] = float(mean_distance)
+        f.attrs['std_distance'] = float(std_distance)
+
     print('\nConcluído.')
 
 

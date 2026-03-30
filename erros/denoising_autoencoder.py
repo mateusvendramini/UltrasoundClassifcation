@@ -63,9 +63,9 @@ from torch.utils.data import Dataset, DataLoader
 # Configuração
 # ---------------------------------------------------------------------------
 
-ART_FILE      = Path('artificial_20260326_235941.h5')
-CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror_bigger_N_100.joblib')
-MODEL_OUT      = Path('dae_best_262_matrizerror_bigger_N_100.pt')
+ART_FILE      = Path('artificial_20260329_211722.h5')
+CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror_bigger_N_400_filter.joblib')
+MODEL_OUT      = Path('dae_best_262_matrizerror_bigger_N_400_filter.pt')
 
 # Arquitetura
 LATENT_DIM = 12

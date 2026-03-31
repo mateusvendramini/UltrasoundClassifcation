@@ -32,7 +32,7 @@ FILES = [
 DATA_DIR = Path('.')
 
 # Número de pontos artificiais por ponto original
-N_ARTIFICIAL = 400
+N_ARTIFICIAL = 50
 
 # Parâmetros da distribuição de ganhos (global)
 GAIN_DISTRIBUTION = 'normal'  # opções: 'normal', 'uniform', 'lognormal'
@@ -276,7 +276,7 @@ def main():
     # Salvar em HDF5
     # ------------------------------------------------------------------
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = DATA_DIR / f'artificial_{timestamp}.h5'
+    out_path = DATA_DIR / f'artificial_MATRIX_N{N_ARTIFICIAL}_{timestamp}.h5'
 
     with h5py.File(out_path, 'w') as f:
         f.attrs['description'] = (

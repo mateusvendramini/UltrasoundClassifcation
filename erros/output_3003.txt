@@ -1,0 +1,913 @@
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Pontos artificiais/original: 10
+
+Carregando dados originais...
+Processando: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  195 pontos lidos.
+
+Dataset original: 195 pontos
+Alturas únicas (39): [56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73.
+ 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91.
+ 92. 93. 94.]
+
+Gerando 10 pontos artificiais por ponto original (1950 no total)...
+Dataset artificial gerado: 1950 pontos
+
+Dataset salvo: artificial_MATRIX_N10_20260330_224438.h5
+  measurements shape : (1950, 16)
+  heights shape      : (1950,)
+
+Estatísticas de distância artificial -> original:
+  média da distância (Euclidiana)   : 0.000016
+  desvio padrão da distância        : 0.000006
+  Salvo para o arquivo : artificial_MATRIX_N10_20260330_224438.h5
+
+Concluído.
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\error_estimation_height_filter.py
+C:\Users\mateu\clones\lvl\erros\error_estimation_height_filter.py:1: SyntaxWarning: invalid escape sequence '\h'
+  """
+Lendo arquivo: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  Alturas (101): [25. 26. 27. 28. 29.] ... [121. 122. 123. 124. 125.]
+  K (5): [9805. 9837. 9870. 9902. 9935.]
+Lendo arquivo: model_compound_4_10_104_1_interface_realisticfull_apod.h5
+  Encontrado N_compound_maxenv, shape=(90, 1, 1, 1, 16)
+  Alturas (90): [40.18339424 41.16551564 42.14008238 43.10750605 44.06816953] ... [116.09304896 117.06429863 118.04291089 119.0293143  120.02397161]
+  K (1): [9935.]
+Processando altura experimental 55.17947811147965 (match artificial 55.0)
+  Matriz K para H_exp=55.17947811147965, H_art=55.0, K_exp=9935.0, K_art=9935.0:
+[[1.43930126 0.55574933 0.9507353  2.33459699]
+ [0.41627929 1.40932876 0.51517477 1.11655459]
+ [0.62500845 0.39955228 0.87884899 0.48357173]
+ [2.15685968 0.5759923  0.4050826  1.09318248]]
+Processando altura experimental 56.07814719875589 (match artificial 56.0)
+  Matriz K para H_exp=56.07814719875589, H_art=56.0, K_exp=9935.0, K_art=9935.0:
+[[1.45503653 0.54976737 1.08189142 2.10549348]
+ [0.38840771 1.40323812 0.5054321  1.16008751]
+ [0.56945705 0.39058478 0.87388506 0.51957234]
+ [1.46203667 0.54933223 0.37022882 1.00949573]]
+Processando altura experimental 56.97356275405638 (match artificial 57.0)
+  Matriz K para H_exp=56.97356275405638, H_art=57.0, K_exp=9935.0, K_art=9935.0:
+[[1.39312506 0.56011148 0.90542971 2.52235789]
+ [0.40865394 1.39671572 0.50680264 1.69765447]
+ [0.62283022 0.37128196 0.87907836 0.48679085]
+ [1.64428228 0.63964063 0.35807689 0.99114295]]
+Processando altura experimental 57.865893996314554 (match artificial 58.0)
+  Matriz K para H_exp=57.865893996314554, H_art=58.0, K_exp=9935.0, K_art=9935.0:
+[[1.4289489  0.54184237 0.86306737 1.83556943]
+ [0.45317517 1.40343626 0.50513628 1.95338807]
+ [0.56991656 0.35770092 0.88757715 0.53053292]
+ [0.63461678 0.48505249 0.33130816 1.2843722 ]]
+Processando altura experimental 58.75530358127745 (match artificial 59.0)
+  Matriz K para H_exp=58.75530358127745, H_art=59.0, K_exp=9935.0, K_art=9935.0:
+[[1.43368722 0.56498462 1.03963422 1.81585624]
+ [0.51874162 1.34533713 0.50445426 2.1725838 ]
+ [0.61525266 0.36768074 0.8930538  0.69999607]
+ [0.381941   0.43411181 0.3092542  1.30973795]]
+Processando altura experimental 59.64194811209782 (match artificial 60.0)
+  Matriz K para H_exp=59.64194811209782, H_art=60.0, K_exp=9935.0, K_art=9935.0:
+[[1.36697815 0.54187367 0.90039548 2.19958271]
+ [0.56943692 1.23997164 0.50685395 2.64669345]
+ [0.64185251 0.34917527 0.92618355 0.81908556]
+ [0.39391368 0.43263411 0.29142609 1.24981422]]
+Processando altura experimental 60.52597860826393 (match artificial 61.0)
+  Matriz K para H_exp=60.52597860826393, H_art=61.0, K_exp=9935.0, K_art=9935.0:
+[[1.34504275 0.58411799 0.79853932 2.06815112]
+ [0.69314995 1.19215866 0.50083421 2.9002876 ]
+ [0.76666157 0.37053724 0.90655802 1.02971338]
+ [0.38431416 0.49428354 0.31750407 1.21779939]]
+Processando altura experimental 61.407540937388404 (match artificial 61.0)
+  Matriz K para H_exp=61.407540937388404, H_art=61.0, K_exp=9935.0, K_art=9935.0:
+[[1.2647308  0.51202288 0.82988461 2.57617664]
+ [0.6736162  1.31738671 0.49147684 3.44290058]
+ [0.91057604 0.40558827 0.89107353 1.10334236]
+ [0.41233181 0.45123895 0.35755132 0.99802867]]
+Processando altura experimental 62.28677621383446 (match artificial 62.0)
+  Matriz K para H_exp=62.28677621383446, H_art=62.0, K_exp=9935.0, K_art=9935.0:
+[[1.38898372 0.55888676 0.95941218 3.28233614]
+ [0.82631191 1.35171123 0.4896506  3.59908416]
+ [1.21702098 0.43736223 0.89566794 1.32973415]
+ [0.45590043 0.7217908  0.54260105 1.05614117]]
+Processando altura experimental 63.163821167693456 (match artificial 63.0)
+Processando altura experimental 64.03880848722739 (match artificial 64.0)
+Processando altura experimental 64.91186713754124 (match artificial 65.0)
+Processando altura experimental 65.78312265795218 (match artificial 66.0)
+Processando altura experimental 66.65269744026016 (match artificial 67.0)
+Processando altura experimental 67.52071098989967 (match artificial 68.0)
+Processando altura experimental 68.38728017175389 (match artificial 68.0)
+Processando altura experimental 69.25251944224227 (match artificial 69.0)
+Processando altura experimental 70.11654106914283 (match artificial 70.0)
+Processando altura experimental 70.97945534047928 (match artificial 71.0)
+Processando altura experimental 71.84137076369153 (match artificial 72.0)
+Processando altura experimental 72.70239425620834 (match artificial 73.0)
+Processando altura experimental 73.56263132845574 (match artificial 74.0)
+Processando altura experimental 74.42218626026263 (match artificial 74.0)
+Processando altura experimental 75.28116227155927 (match artificial 75.0)
+Processando altura experimental 76.13966168821295 (match artificial 76.0)
+Processando altura experimental 76.9977861037995 (match artificial 77.0)
+Processando altura experimental 77.85563653807021 (match artificial 78.0)
+Processando altura experimental 78.71331359284716 (match artificial 79.0)
+Processando altura experimental 79.57091760605253 (match artificial 80.0)
+Processando altura experimental 80.42854880456537 (match artificial 80.0)
+Processando altura experimental 81.2863074565847 (match artificial 81.0)
+Processando altura experimental 82.14429402417609 (match artificial 82.0)
+Processando altura experimental 83.00260931667985 (match artificial 83.0)
+Processando altura experimental 83.86135464566584 (match artificial 84.0)
+Processando altura experimental 84.72063198213492 (match artificial 85.0)
+Processando altura experimental 85.58054411668613 (match artificial 86.0)
+Processando altura experimental 86.44119482339624 (match artificial 86.0)
+Processando altura experimental 87.3026890281924 (match artificial 87.0)
+Processando altura experimental 88.16513298253837 (match artificial 88.0)
+Processando altura experimental 89.02863444330752 (match artificial 89.0)
+Processando altura experimental 89.8933028597714 (match artificial 90.0)
+Processando altura experimental 90.75924956870308 (match artificial 91.0)
+Processando altura experimental 91.62658799867485 (match artificial 92.0)
+Processando altura experimental 92.49543388471943 (match artificial 92.0)
+Processando altura experimental 93.36590549463368 (match artificial 93.0)
+Processando altura experimental 94.23812386832269 (match artificial 94.0)
+
+Média global dos ganhos: 1.018019
+Desvio padrão global dos ganhos: 0.749247
+Total de ganhos coletados: 736
+
+Matriz de médias por posição (4x4):
+[[1.3727024  1.17444902 0.91293725 1.64295866]
+ [0.92014678 1.24702196 0.69783488 2.26665548]
+ [0.74080113 0.44735374 0.9984074  1.08645055]
+ [0.94258197 0.70985027 0.41643729 0.71171403]]
+
+Matriz de desvios padrão por posição (4x4):
+[[0.17252078 0.40905934 0.39832447 1.19764302]
+ [0.70814467 0.43623009 0.50670535 1.26177721]
+ [0.47684947 0.19616892 0.55664087 0.34456988]
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Done
+PS C:\Users\mateu\clones\lvl\erros> ls *_N*
+
+
+    Diretório: C:\Users\mateu\clones\lvl\erros
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        30/03/2026     22:44         279276 artificial_MATRIX_N10_20260330_224438.h5
+-a----        30/03/2026     22:14       23271230 artificial_N1000_20260330_221438.h5
+-a----        30/03/2026     22:14        2398579 artificial_N100_20260330_221404.h5
+-a----        30/03/2026     22:13         277872 artificial_N10_20260330_221343.h5
+-a----        30/03/2026     22:14        5877195 artificial_N250_20260330_221430.h5
+-a----        30/03/2026     22:14       11675676 artificial_N500_20260330_221413.h5
+-a----        30/03/2026     22:13        1217731 artificial_N50_20260330_221351.h5
+-a----        27/03/2026     00:06          19572 dae_best_262_matrizerror_bigger_N_100.pt
+-a----        27/03/2026     22:50          19726 dae_best_262_matrizerror_bigger_N_100_filter.pt
+-a----        29/03/2026     20:10          19726 dae_best_262_matrizerror_bigger_N_200_filter.pt
+-a----        29/03/2026     21:27          19726 dae_best_262_matrizerror_bigger_N_400_filter.pt
+-a----        27/03/2026     00:07          26441 dae_checkpoint_matrizerror_bigger_N_100.joblib
+-a----        27/03/2026     22:50          26261 dae_checkpoint_matrizerror_bigger_N_100_filter.joblib
+-a----        29/03/2026     20:11          27737 dae_checkpoint_matrizerror_bigger_N_200_filter.joblib
+-a----        29/03/2026     21:29          25398 dae_checkpoint_matrizerror_bigger_N_400_filter.joblib
+
+
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\generate_artificial_dataset_matrizerror_heigh_filter.py
+C:\Users\mateu\clones\lvl\erros\error_estimation_height_filter.py:1: SyntaxWarning: invalid escape sequence '\h'
+  """
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\generate_artificial_dataset_matrizerror_heigh_filter.py", line 22, in <module>
+    from error_estimation_height_filter import MIN_HEIGHT, MAX_HEIGHT
+ImportError: cannot import name 'MIN_HEIGHT' from 'error_estimation_height_filter' (C:\Users\mateu\clones\lvl\erros\error_estimation_height_filter.py)
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\generate_artificial_dataset_matrizerror_heigh_filter.py
+C:\Users\mateu\clones\lvl\erros\error_estimation_height_filter.py:1: SyntaxWarning: invalid escape sequence '\h'
+  """
+============================================================
+Geração de Dataset Artificial
+============================================================
+Distribuição de ganhos : normal
+Usando matriz de ganhos 4x4 (mean/std por posição).
+GAIN_MEAN_MATRIX:
+[[1.3727024  1.17444902 0.91293725 1.64295866]
+ [0.92014678 1.24702196 0.69783488 2.26665548]
+ [0.74080113 0.44735374 0.9984074  1.08645055]
+ [0.94258197 0.70985027 0.41643729 0.71171403]]
+GAIN_STD_MATRIX:
+[[0.17252078 0.40905934 0.39832447 1.19764302]
+ [0.70814467 0.43623009 0.50670535 1.26177721]
+ [0.47684947 0.19616892 0.55664087 0.34456988]
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Pontos artificiais/original: 1000
+
+Carregando dados originais...
+Processando: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  195 pontos lidos.
+
+Dataset original: 195 pontos
+Alturas únicas (39): [56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73.
+ 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91.
+ 92. 93. 94.]
+
+Gerando 1000 pontos artificiais por ponto original (195000 no total)...
+Dataset artificial gerado: 195000 pontos
+
+Dataset salvo: artificial_MATRIX_N1000_20260330_224737.h5
+  measurements shape : (195000, 16)
+  heights shape      : (195000,)
+
+Estatísticas de distância artificial -> original:
+  média da distância (Euclidiana)   : 0.000016
+  desvio padrão da distância        : 0.000006
+  Salvo para o arquivo : artificial_MATRIX_N1000_20260330_224737.h5
+
+Concluído.
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\generate_artificial_dataset_matrizerror_heigh_filter.py
+============================================================
+Geração de Dataset Artificial
+============================================================
+Distribuição de ganhos : normal
+Usando matriz de ganhos 4x4 (mean/std por posição).
+GAIN_MEAN_MATRIX:
+[[1.3727024  1.17444902 0.91293725 1.64295866]
+ [0.92014678 1.24702196 0.69783488 2.26665548]
+ [0.74080113 0.44735374 0.9984074  1.08645055]
+ [0.94258197 0.70985027 0.41643729 0.71171403]]
+GAIN_STD_MATRIX:
+[[0.17252078 0.40905934 0.39832447 1.19764302]
+ [0.70814467 0.43623009 0.50670535 1.26177721]
+ [0.47684947 0.19616892 0.55664087 0.34456988]
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Pontos artificiais/original: 250
+
+Carregando dados originais...
+Processando: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  195 pontos lidos.
+
+Dataset original: 195 pontos
+Alturas únicas (39): [56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73.
+ 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91.
+ 92. 93. 94.]
+
+Gerando 250 pontos artificiais por ponto original (48750 no total)...
+Dataset artificial gerado: 48750 pontos
+
+Dataset salvo: artificial_MATRIX_N250_20260330_224754.h5
+  measurements shape : (48750, 16)
+  heights shape      : (48750,)
+
+Estatísticas de distância artificial -> original:
+  média da distância (Euclidiana)   : 0.000016
+  desvio padrão da distância        : 0.000006
+  Salvo para o arquivo : artificial_MATRIX_N250_20260330_224754.h5
+
+Concluído.
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\generate_artificial_dataset_matrizerror_heigh_filter.py
+============================================================
+Geração de Dataset Artificial
+============================================================
+Distribuição de ganhos : normal
+Usando matriz de ganhos 4x4 (mean/std por posição).
+GAIN_MEAN_MATRIX:
+[[1.3727024  1.17444902 0.91293725 1.64295866]
+ [0.92014678 1.24702196 0.69783488 2.26665548]
+ [0.74080113 0.44735374 0.9984074  1.08645055]
+ [0.94258197 0.70985027 0.41643729 0.71171403]]
+GAIN_STD_MATRIX:
+[[0.17252078 0.40905934 0.39832447 1.19764302]
+ [0.70814467 0.43623009 0.50670535 1.26177721]
+ [0.47684947 0.19616892 0.55664087 0.34456988]
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Pontos artificiais/original: 500
+
+Carregando dados originais...
+Processando: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  195 pontos lidos.
+
+Dataset original: 195 pontos
+Alturas únicas (39): [56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73.
+ 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91.
+ 92. 93. 94.]
+
+Gerando 500 pontos artificiais por ponto original (97500 no total)...
+Dataset artificial gerado: 97500 pontos
+
+Dataset salvo: artificial_MATRIX_N500_20260330_224803.h5
+  measurements shape : (97500, 16)
+  heights shape      : (97500,)
+
+Estatísticas de distância artificial -> original:
+  média da distância (Euclidiana)   : 0.000016
+  desvio padrão da distância        : 0.000006
+  Salvo para o arquivo : artificial_MATRIX_N500_20260330_224803.h5
+
+Concluído.
+PS C:\Users\mateu\clones\lvl\erros> explorer.exe .
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\generate_artificial_dataset_matrizerror_heigh_filter.py
+============================================================
+Geração de Dataset Artificial
+============================================================
+Distribuição de ganhos : normal
+Usando matriz de ganhos 4x4 (mean/std por posição).
+GAIN_MEAN_MATRIX:
+[[1.3727024  1.17444902 0.91293725 1.64295866]
+ [0.92014678 1.24702196 0.69783488 2.26665548]
+ [0.74080113 0.44735374 0.9984074  1.08645055]
+ [0.94258197 0.70985027 0.41643729 0.71171403]]
+GAIN_STD_MATRIX:
+[[0.17252078 0.40905934 0.39832447 1.19764302]
+ [0.70814467 0.43623009 0.50670535 1.26177721]
+ [0.47684947 0.19616892 0.55664087 0.34456988]
+ [0.6937044  0.36402515 0.21369271 0.2406836 ]]
+Pontos artificiais/original: 50
+
+Carregando dados originais...
+Processando: model_compound_4_10_104_1_interface_synthetic_apod.h5
+  Encontrado N_compound_maxenv, shape=(101, 1, 5, 1, 16)
+  195 pontos lidos.
+
+Dataset original: 195 pontos
+Alturas únicas (39): [56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73.
+ 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91.
+ 92. 93. 94.]
+
+Gerando 50 pontos artificiais por ponto original (9750 no total)...
+Dataset artificial gerado: 9750 pontos
+
+Dataset salvo: artificial_MATRIX_N50_20260330_224837.h5
+  measurements shape : (9750, 16)
+  heights shape      : (9750,)
+
+Estatísticas de distância artificial -> original:
+  média da distância (Euclidiana)   : 0.000016
+  desvio padrão da distância        : 0.000006
+  Salvo para o arquivo : artificial_MATRIX_N50_20260330_224837.h5
+
+Concluído.
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py artificial_MATRIX_N50_20260330_224837.h5
+usage: denoising_autoencoder.py [-h] --art_file ART_FILE
+denoising_autoencoder.py: error: the following arguments are required: --art_file
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py --art_file artificial_MATRIX_N50_20260330_224837.h5
+Dispositivo: cpu
+
+Arquivo: artificial_MATRIX_N50_20260330_224837.h5
+  Pontos originais   : 195
+  Cópias ruidosas    : 9750  (50 por original)
+  Distribuição ruído : normal  σ=0.1
+  Razão média (art/orig): 1.020207
+
+Divisão por índices originais:
+  treino : 136 orig  → 6800 ruidosos
+  val    : 29  orig  → 1450  ruidosos
+  teste  : 30  orig  → 1500  ruidosos
+
+Shapes (normalizados):
+  treino  : X_noisy=(6800, 16)  X_clean=(6800, 16)
+  val     : X_noisy=(1450, 16)    X_clean=(1450, 16)
+  teste   : X_noisy=(1500, 16)   X_clean=(1500, 16)
+
+Modelo: DenoisingAutoencoder
+  input_dim  = 16
+  latent_dim = 8
+  parâmetros = 1752
+  conexão residual = True  (saída = x̃ + Decoder(Encoder(x̃)))
+
+Iniciando treino...
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 564, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 524, in main
+    history = train(
+              ^^^^^^
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 300, in train
+    torch.save(model.state_dict(), MODEL_OUT)
+                                   ^^^^^^^^^
+NameError: name 'MODEL_OUT' is not defined
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py --art_file artificial_MATRIX_N50_20260330_224837.h5
+Dispositivo: cpu
+
+Arquivo: artificial_MATRIX_N50_20260330_224837.h5
+  Pontos originais   : 195
+  Cópias ruidosas    : 9750  (50 por original)
+  Distribuição ruído : normal  σ=0.1
+  Razão média (art/orig): 1.020207
+
+Divisão por índices originais:
+  treino : 136 orig  → 6800 ruidosos
+  val    : 29  orig  → 1450  ruidosos
+  teste  : 30  orig  → 1500  ruidosos
+
+Shapes (normalizados):
+  treino  : X_noisy=(6800, 16)  X_clean=(6800, 16)
+  val     : X_noisy=(1450, 16)    X_clean=(1450, 16)
+  teste   : X_noisy=(1500, 16)   X_clean=(1500, 16)
+
+Modelo: DenoisingAutoencoder
+  input_dim  = 16
+  latent_dim = 8
+  parâmetros = 1752
+  conexão residual = True  (saída = x̃ + Decoder(Encoder(x̃)))
+
+Iniciando treino...
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 569, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 529, in main
+    history = train(
+              ^^^^^^
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 305, in train
+    torch.save(model.state_dict(), MODEL_OUT)
+  File "C:\Users\mateu\miniconda3\envs\machinelearning\Lib\site-packages\torch\serialization.py", line 651, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mateu\miniconda3\envs\machinelearning\Lib\site-packages\torch\serialization.py", line 525, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mateu\miniconda3\envs\machinelearning\Lib\site-packages\torch\serialization.py", line 496, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: [enforce fail at inline_container.cc:642] . invalid file name:
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py --art_file artificial_MATRIX_N50_20260330_224837.h5
+Dispositivo: cpu
+
+Arquivo: artificial_MATRIX_N50_20260330_224837.h5
+  Pontos originais   : 195
+  Cópias ruidosas    : 9750  (50 por original)
+  Distribuição ruído : normal  σ=0.1
+  Razão média (art/orig): 1.020207
+
+Divisão por índices originais:
+  treino : 136 orig  → 6800 ruidosos
+  val    : 29  orig  → 1450  ruidosos
+  teste  : 30  orig  → 1500  ruidosos
+
+Shapes (normalizados):
+  treino  : X_noisy=(6800, 16)  X_clean=(6800, 16)
+  val     : X_noisy=(1450, 16)    X_clean=(1450, 16)
+  teste   : X_noisy=(1500, 16)   X_clean=(1500, 16)
+
+Modelo: DenoisingAutoencoder
+  input_dim  = 16
+  latent_dim = 8
+  parâmetros = 1752
+  conexão residual = True  (saída = x̃ + Decoder(Encoder(x̃)))
+
+Iniciando treino...
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 567, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 527, in main
+    history = train(
+              ^^^^^^
+  File "C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py", line 303, in train
+    torch.save(model.state_dict(), MODEL_OUT)
+                                   ^^^^^^^^^
+NameError: name 'MODEL_OUT' is not defined
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py --art_file artificial_MATRIX_N50_20260330_224837.h5
+Dispositivo: cpu
+
+Arquivo: artificial_MATRIX_N50_20260330_224837.h5
+  Pontos originais   : 195
+  Cópias ruidosas    : 9750  (50 por original)
+  Distribuição ruído : normal  σ=0.1
+  Razão média (art/orig): 1.020207
+
+Divisão por índices originais:
+  treino : 136 orig  → 6800 ruidosos
+  val    : 29  orig  → 1450  ruidosos
+  teste  : 30  orig  → 1500  ruidosos
+
+Shapes (normalizados):
+  treino  : X_noisy=(6800, 16)  X_clean=(6800, 16)
+  val     : X_noisy=(1450, 16)    X_clean=(1450, 16)
+  teste   : X_noisy=(1500, 16)   X_clean=(1500, 16)
+
+Modelo: DenoisingAutoencoder
+  input_dim  = 16
+  latent_dim = 8
+  parâmetros = 1752
+  conexão residual = True  (saída = x̃ + Decoder(Encoder(x̃)))
+
+Iniciando treino...
+Epoch    1/600  train=1.6405575  val=1.0147061 ← melhor
+Epoch    2/600  train=0.8970411  val=0.6192054 ← melhor
+Epoch    3/600  train=0.6271715  val=0.4548346 ← melhor
+Epoch    4/600  train=0.5036534  val=0.3728123 ← melhor
+Epoch    5/600  train=0.4558912  val=0.3403825 ← melhor
+Epoch    6/600  train=0.4256850  val=0.3210756 ← melhor
+Epoch    7/600  train=0.4132840  val=0.3092094 ← melhor
+Epoch    8/600  train=0.4040326  val=0.3031358 ← melhor
+Epoch    9/600  train=0.3996925  val=0.2985637 ← melhor
+Epoch   10/600  train=0.3916849  val=0.2955977 ← melhor
+Epoch   11/600  train=0.3875610  val=0.2919336 ← melhor
+Epoch   12/600  train=0.3869184  val=0.2905407 ← melhor
+Epoch   13/600  train=0.3867877  val=0.2876266 ← melhor
+Epoch   16/600  train=0.3769601  val=0.2854724 ← melhor
+Epoch   17/600  train=0.3755831  val=0.2834914 ← melhor
+Epoch   18/600  train=0.3753288  val=0.2831647 ← melhor
+Epoch   19/600  train=0.3711219  val=0.2813612 ← melhor
+Epoch   20/600  train=0.3704603  val=0.2818437
+Epoch   22/600  train=0.3705724  val=0.2803456 ← melhor
+Epoch   25/600  train=0.3668282  val=0.2791500 ← melhor
+Epoch   26/600  train=0.3668879  val=0.2771439 ← melhor
+Epoch   28/600  train=0.3651250  val=0.2769833 ← melhor
+Epoch   30/600  train=0.3650944  val=0.2793170
+Epoch   31/600  train=0.3653721  val=0.2745042 ← melhor
+Epoch   39/600  train=0.3578808  val=0.2682663 ← melhor
+Epoch   40/600  train=0.3576641  val=0.2772217
+Epoch   47/600  train=0.3571843  val=0.2677838 ← melhor
+Epoch   49/600  train=0.3515485  val=0.2658936 ← melhor
+Epoch   50/600  train=0.3510737  val=0.2637859 ← melhor
+Epoch   60/600  train=0.3477641  val=0.2663615
+Epoch   63/600  train=0.3508843  val=0.2620451 ← melhor
+Epoch   68/600  train=0.3418318  val=0.2618536 ← melhor
+Epoch   70/600  train=0.3488831  val=0.2618594
+Epoch   73/600  train=0.3458262  val=0.2614673 ← melhor
+Epoch   76/600  train=0.3443660  val=0.2611950 ← melhor
+Epoch   77/600  train=0.3448307  val=0.2607198 ← melhor
+Epoch   80/600  train=0.3441657  val=0.2613230
+Epoch   85/600  train=0.3437431  val=0.2606555 ← melhor
+Epoch   87/600  train=0.3410002  val=0.2597805 ← melhor
+Epoch   90/600  train=0.3441836  val=0.2638518
+Epoch   93/600  train=0.3409923  val=0.2582672 ← melhor
+Epoch   99/600  train=0.3393818  val=0.2579769 ← melhor
+Epoch  100/600  train=0.3384122  val=0.2592595
+Epoch  101/600  train=0.3411419  val=0.2562554 ← melhor
+Epoch  110/600  train=0.3358149  val=0.2577778
+Epoch  120/600  train=0.3400464  val=0.2568911
+Epoch  123/600  train=0.3320035  val=0.2558788 ← melhor
+Epoch  125/600  train=0.3314863  val=0.2553196 ← melhor
+Epoch  128/600  train=0.3355256  val=0.2552943 ← melhor
+Epoch  130/600  train=0.3340960  val=0.2545730 ← melhor
+Epoch  136/600  train=0.3329396  val=0.2536847 ← melhor
+Epoch  140/600  train=0.3331501  val=0.2563577
+Epoch  148/600  train=0.3347594  val=0.2536722 ← melhor
+Epoch  150/600  train=0.3315426  val=0.2554596
+Epoch  160/600  train=0.3269806  val=0.2566187
+Epoch  161/600  train=0.3288277  val=0.2530098 ← melhor
+Epoch  165/600  train=0.3286634  val=0.2527808 ← melhor
+Epoch  170/600  train=0.3283412  val=0.2533811
+Epoch  172/600  train=0.3291640  val=0.2522832 ← melhor
+Epoch  179/600  train=0.3306846  val=0.2519573 ← melhor
+Epoch  180/600  train=0.3291386  val=0.2557086
+Epoch  190/600  train=0.3286556  val=0.2567428
+Epoch  196/600  train=0.3268758  val=0.2510308 ← melhor
+Epoch  200/600  train=0.3258275  val=0.2565301
+Epoch  210/600  train=0.3252818  val=0.2564752
+Epoch  220/600  train=0.3232820  val=0.2532982
+Epoch  230/600  train=0.3261441  val=0.2540209
+Epoch  239/600  train=0.3271308  val=0.2507139 ← melhor
+Epoch  240/600  train=0.3278801  val=0.2511905
+Epoch  250/600  train=0.3264254  val=0.2518391
+Epoch  258/600  train=0.3232713  val=0.2505350 ← melhor
+Epoch  260/600  train=0.3253026  val=0.2514522
+Epoch  270/600  train=0.3244721  val=0.2521083
+Epoch  280/600  train=0.3243758  val=0.2502417 ← melhor
+Epoch  290/600  train=0.3267502  val=0.2549053
+Epoch  300/600  train=0.3263871  val=0.2531123
+Epoch  310/600  train=0.3242455  val=0.2540568
+Epoch  320/600  train=0.3271708  val=0.2532565
+Epoch  330/600  train=0.3283738  val=0.2545281
+Epoch  340/600  train=0.3236797  val=0.2544271
+
+Early stopping na época 340 (melhor val_loss=0.2502417)
+C:\Users\mateu\clones\lvl\erros\denoising_autoencoder.py:533: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(MODEL_OUT, map_location=DEVICE))
+
+=======================================================
+Avaliação no conjunto de teste (espaço original)
+=======================================================
+Métrica                   Ruidoso     Denoised
+-------------------------------------------------------
+MAE                    0.00000291   0.00000136
+MSE                    0.00000000   0.00000000
+SNR (dB)                   0.1834       7.0127
+=======================================================
+
+Melhora MAE : +53.31%
+Melhora SNR : +6.8293 dB
+
+Checkpoint salvo: dae_checkpoint_artificial_MATRIX_N50_20260330_224837.joblib
+Gráfico salvo: dae_training_history.png
+Gráfico salvo: dae_reconstruction_samples.png
+Gráfico salvo: dae_error_distribution.png
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\denoising_autoencoder.py --art_file artificial_MATRIX_N50_20260330_224837.h5^C
+PS C:\Users\mateu\clones\lvl\erros> python.exe .\pipeline_complete.ipynb^C
+PS C:\Users\mateu\clones\lvl\erros> pytpython pipeline_height_filter_validation.py --knn_model_path knn_checkpoint_synthetic_3neight_group2 --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint dae_checkpoint_artificial_N10_20260330_221343
+pytpython : O termo 'pytpython' não é reconhecido como nome de cmdlet, função, arquivo de script ou programa operável. Verifique a grafia do nome ou, se um caminho tiver sido incluído, veja se o caminho está correto e tente novamente.
+No linha:1 caractere:1
++ pytpython pipeline_height_filter_validation.py --knn_model_path knn_c ...
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (pytpython:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path knn_checkpoint_synthetic_3neight_group2 --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint dae_checkpoint_artificial_N10_20260330_221343   
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:133: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 169, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 133, in main
+    dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+  File "C:\Users\mateu\miniconda3\envs\machinelearning\Lib\site-packages\torch\nn\modules\module.py", line 2215, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for DenoisingAutoencoder:
+        size mismatch for encoder.0.weight: copying a param with shape torch.Size([32, 16]) from checkpoint, the shape in current model is torch.Size([48, 16]).
+        size mismatch for encoder.0.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for encoder.1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for encoder.1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for encoder.1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for encoder.1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for encoder.3.weight: copying a param with shape torch.Size([8, 32]) from checkpoint, the shape in current model is torch.Size([12, 48]).
+        size mismatch for encoder.3.bias: copying a param with shape torch.Size([8]) from checkpoint, the shape in current model is torch.Size([12]).
+        size mismatch for decoder.0.weight: copying a param with shape torch.Size([32, 8]) from checkpoint, the shape in current model is torch.Size([48, 12]).
+        size mismatch for decoder.0.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for decoder.1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for decoder.1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for decoder.1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for decoder.1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([48]).
+        size mismatch for decoder.3.weight: copying a param with shape torch.Size([16, 32]) from checkpoint, the shape in current model is torch.Size([16, 48]).
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path knn_checkpoint_synthetic_3neight_group2 --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint dae_checkpoint_artificial_N10_20260330_221343
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 121, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 90, in main
+    checkpoint = joblib.load(args.dae_checkpoint)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mateu\miniconda3\envs\machinelearning\Lib\site-packages\joblib\numpy_pickle.py", line 650, in load
+    with open(filename, 'rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'dae_checkpoint_artificial_N10_20260330_221343'
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path knn_checkpoint_synthetic_3neight_group2 --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 121, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 92, in main
+    knn_model = checkpoint['knn']['GradientBoosting']
+                ~~~~~~~~~~^^^^^^^
+KeyError: 'knn'
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 121, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 92, in main
+    knn_model = checkpoint['knn']['GradientBoosting']
+                ~~~~~~~~~~^^^^^^^
+KeyError: 'knn'
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 121, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 92, in main
+    knn_model = checkpoint['knn']['KNN']
+                ~~~~~~~~~~^^^^^^^
+KeyError: 'knn'
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Traceback (most recent call last):
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 124, in <module>
+    main()
+  File "C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py", line 94, in main
+    knn_scaler = knn_checkpoint['knn']['scaler']
+                 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'scaler'
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.3916
+MSE: 8.2421
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N10_20260330_221343.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N10_20260330_221343.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.3916
+MSE: 8.2421
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N50_20260330_221351.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N50_20260330_221351.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1273
+MSE: 7.0455
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N250_20260330_221430.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N250_20260330_221430.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 1.9262
+MSE: 5.9445
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N500_20260330_221413.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N500_20260330_221413.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.0365
+MSE: 6.3024
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 1.9904
+MSE: 6.1136
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N10_20260330_224438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N10_20260330_224438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 3.2192
+MSE: 16.1664
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N50_20260330_224837.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N50_20260330_224837.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.9750
+MSE: 13.5660
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N250_20260330_224754.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N250_20260330_224754.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible toe data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.8943
+MSE: 13.3062
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.1441
+MSE direto: 7.0695
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N500  --experimental_file model_compound_4_10_104_1_interface_realisticfullpython pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N250_20260330_224754.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N250_20260330_224754.joblib^C
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N1000_20260330_224737.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N1000_20260330_224737.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.3408
+MSE: 8.8583
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N500_20260330_224803.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N500_20260330_224803.joblib  
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.6574
+MSE: 11.0970
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_MATRIX_N1000_20260330_224737.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_MATRIX_N1000_20260330_224737.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.3408
+MSE: 8.8583
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_checkpoint_artificial_N1000_20260330_221438.joblib  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib^C            
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib              
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1159
+MSE: 6.6344
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib^C
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1159
+MSE: 6.6344
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1159
+MSE: 6.6344
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib^C
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1159
+MSE: 6.6344
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373
+PS C:\Users\mateu\clones\lvl\erros> python pipeline_height_filter_validation.py --knn_model_path .\knn_checkpoint_synthetic_3neight_group2.joblib --dae_model_path .\dae_model_out_artificial_N1000_20260330_221438.pt  --experimental_file model_compound_4_10_104_1_interface_realisticfull_apod.h5 --dae_checkpoint .\dae_checkpoint_artificial_N1000_20260330_221438.joblib
+Dados experimentais carregados: 46 amostras
+Shapes: heights (46,), features (46, 16)
+C:\Users\mateu\clones\lvl\erros\pipeline_height_filter_validation.py:85: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature. 
+  dae_model.load_state_dict(torch.load(args.dae_model_path, map_location='cpu'))
+Scaler carregado - mean (primeiras 4): [9.72360037e-06 6.58304358e-06 1.98103867e-06 2.46042923e-06]
+Métricas para o ensaio:
+MAE: 2.1159
+MSE: 6.6344
+
+Métricas para KNN direto nos dados de entrada
+MAE direto: 2.0740
+MSE direto: 6.6373

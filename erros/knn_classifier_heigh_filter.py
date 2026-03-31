@@ -93,16 +93,16 @@ idx = np.argsort(y)
 X_sorted = X[idx]
 y_sorted = y[idx]
 
-# Número de grupos de 3
-n_groups = len(y_sorted) // 3
+# Número de grupos de 2
+n_groups = len(y_sorted) // 2
 
-# Trunca para múltiplo de 3 (descarta resto, se houver)
-X_trim = X_sorted[:n_groups * 3]
-y_trim = y_sorted[:n_groups * 3]
+# Trunca para múltiplo de 2 (descarta resto, se houver)
+X_trim = X_sorted[:n_groups * 2]
+y_trim = y_sorted[:n_groups * 2]
 
-# Reshape para agrupar de 3 em 3
-X_grouped = X_trim.reshape(n_groups, 3, -1)
-y_grouped = y_trim.reshape(n_groups, 3)
+# Reshape para agrupar de 2 em 2
+X_grouped = X_trim.reshape(n_groups, 2, -1)
+y_grouped = y_trim.reshape(n_groups, 2)
 
 # Média das alturas
 y_new = y_grouped.mean(axis=1)
@@ -114,7 +114,7 @@ X_new = X_trim
 
 #reescreve vetor X e y com os novos valores agrupados
 X = X_new
-y = np.repeat(y_new, 3)
+y = np.repeat(y_new, 2)
 
 
 unique_heights = np.unique(y)
@@ -143,7 +143,7 @@ X_test_s = scaler.transform(X_test)
 from sklearn.svm import SVR
 
 models = {
-    "KNN": KNeighborsRegressor(n_neighbors=10, weights='distance'),
+    "KNN": KNeighborsRegressor(n_neighbors=3, weights='distance'),
     "RandomForest": RandomForestRegressor(n_estimators=100),
     "GradientBoosting": GradientBoostingRegressor(),
     "SVR": SVR(kernel='rbf')
@@ -202,7 +202,7 @@ plt.show()
 #     print(f'  true={y_val[i]:.2f} pred={pred_val[i]:.3f} diff={pred_val[i]-y_val[i]:.3f}')
 
 # save model checkpoint
-CHECKPOINT_PATH = DATA_DIR / 'knn_checkpoint_synthetic_10neigh.joblib'
+CHECKPOINT_PATH = DATA_DIR / 'knn_checkpoint_synthetic_3neight_group2.joblib'
 checkpoint = {
     'knn': trained_models,
     'scaler': scaler,

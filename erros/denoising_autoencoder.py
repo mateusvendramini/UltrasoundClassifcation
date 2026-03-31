@@ -44,7 +44,7 @@ Divisão treino/val/teste
   Depois de dividir os índices originais, expandimos para os índices ruidosos:
       orig_idx i → noisy_idx [i*N_ART, i*N_ART+1, ..., i*N_ART+N_ART-1]
 
-Uso: python denoising_autoencoder.py
+Uso: python denoising_autoencoder.py --art_file <path_to_artificial_dataset.h5>
 """
 
 import h5py
@@ -58,17 +58,17 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from torch.utils.data import Dataset, DataLoader
+import argparse
 
 # ---------------------------------------------------------------------------
 # Configuração
 # ---------------------------------------------------------------------------
 
-ART_FILE      = Path('artificial_20260329_211722.h5')
-CHECKPOINT_OUT = Path('dae_checkpoint_matrizerror_bigger_N_400_filter.joblib')
-MODEL_OUT      = Path('dae_best_262_matrizerror_bigger_N_400_filter.pt')
+
+# Place holders 
 
 # Arquitetura
-LATENT_DIM = 12
+LATENT_DIM = 8
 
 # Treino
 BATCH_SIZE  = 64
@@ -216,22 +216,23 @@ class DenoisingAutoencoder(nn.Module):
     ----------
     input_dim  : dimensão das medições (16 canais)
     latent_dim : dimensão do espaço latente (espaço comprimido)
+    hidden_dim : dimensão da camada oculta intermediária (maior que latent_dim)
     """
-    def __init__(self, input_dim: int = 16, latent_dim: int = 8):
+    def __init__(self, input_dim: int = 16, latent_dim: int = 8, hidden_dim: int = 32):
         super().__init__()
-
+        print(f'Inicializando DenoisingAutoencoder com input_dim={input_dim}, latent_dim={latent_dim}, hidden_dim={hidden_dim}')
         self.encoder = nn.Sequential(
-            nn.Linear(input_dim, 48),
-            nn.BatchNorm1d(48),
+            nn.Linear(input_dim, hidden_dim),
+            nn.BatchNorm1d(hidden_dim),
             nn.GELU(),
-            nn.Linear(48, latent_dim),
+            nn.Linear(hidden_dim, latent_dim),
         )
 
         self.decoder = nn.Sequential(
-            nn.Linear(latent_dim, 48),
-            nn.BatchNorm1d(48),
+            nn.Linear(latent_dim, hidden_dim),
+            nn.BatchNorm1d(hidden_dim),
             nn.GELU(),
-            nn.Linear(48, input_dim),
+            nn.Linear(hidden_dim, input_dim),
         )
 
         # Inicializa os pesos do decoder próximos de zero para que
@@ -255,7 +256,7 @@ class DenoisingAutoencoder(nn.Module):
 # 6. Loop de treino
 # ---------------------------------------------------------------------------
 
-def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, device):
+def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, device, model_out_path):
     model = model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -300,7 +301,7 @@ def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, d
         if val_loss < best_val_loss:
             best_val_loss  = val_loss
             patience_count = 0
-            torch.save(model.state_dict(), MODEL_OUT)
+            torch.save(model.state_dict(), model_out_path)
         else:
             patience_count += 1
 
@@ -464,7 +465,20 @@ def plot_error_distribution(results):
 # ---------------------------------------------------------------------------
 
 def main():
+    parser = argparse.ArgumentParser(description='Train Denoising Autoencoder')
+    parser.add_argument('--art_file', required=True, help='Path to the artificial dataset HDF5 file')
+    parser.add_argument(('--hidden_dim'), type=int, default=32, help='Hidden layer dimension (default: 32)')
+    parser.add_argument(('--latent_dim'), type=int, default=8, help='Latent space dimension (default: 8)')
+    args = parser.parse_args()
+
+    ART_FILE = Path(args.art_file)
+    CHECKPOINT_OUT = Path(f'dae_checkpoint_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.joblib')
+    MODEL_OUT = Path(f'dae_model_out_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.pt')
+
     print(f'Dispositivo: {DEVICE}')
+    print(f'Args artificial dataset: {ART_FILE}')
+    print(f'Args hidden dimension: {args.hidden_dim}')
+    print(f'Args latent dimension: {args.latent_dim}')
     print()
 
     # 1. Dados e pares de correspondência
@@ -505,11 +519,11 @@ def main():
     )
 
     # 5. Modelo
-    model = DenoisingAutoencoder(input_dim=16, latent_dim=LATENT_DIM)
+    model = DenoisingAutoencoder(input_dim=16, latent_dim=args.latent_dim, hidden_dim=args.hidden_dim)
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f'Modelo: DenoisingAutoencoder')
     print(f'  input_dim  = 16')
-    print(f'  latent_dim = {LATENT_DIM}')
+    print(f'  latent_dim = {args.latent_dim}')
     print(f'  parâmetros = {n_params}')
     print(f'  conexão residual = True  (saída = x̃ + Decoder(Encoder(x̃)))')
     print()
@@ -518,7 +532,7 @@ def main():
     print('Iniciando treino...')
     history = train(
         model, train_loader, val_loader,
-        EPOCHS, LR, WEIGHT_DECAY, PATIENCE, DEVICE
+        EPOCHS, LR, WEIGHT_DECAY, PATIENCE, DEVICE, MODEL_OUT
     )
 
     # 7. Carrega o melhor modelo e avalia no teste
@@ -550,9 +564,9 @@ def main():
     print(f'\nCheckpoint salvo: {CHECKPOINT_OUT}')
 
     # 9. Visualizações
-    plot_training_history(history)
-    plot_reconstruction(results)
-    plot_error_distribution(results)
+    #plot_training_history(history)
+    #plot_reconstruction(results)
+    #plot_error_distribution(results)
 
 
 if __name__ == '__main__':

@@ -19,6 +19,7 @@ import h5py
 from pathlib import Path
 import numpy as np
 from datetime import datetime
+from error_estimation_height_filter import MIN_HEIGHT, MAX_HEIGHT
 
 # ---------------------------------------------------------------------------
 # Configuração
@@ -31,7 +32,7 @@ FILES = [
 DATA_DIR = Path('.')
 
 # Número de pontos artificiais por ponto original
-N_ARTIFICIAL = 50
+N_ARTIFICIAL = 1000
 
 # Parâmetros da distribuição de ganhos
 GAIN_DISTRIBUTION = 'normal'  # opções: 'normal', 'uniform', 'lognormal'
@@ -82,6 +83,9 @@ def load_original_data(files, data_dir):
 
             count_before = len(vals_list)
             for hi, hval in enumerate(axis_H):
+                if not (MIN_HEIGHT < hval < MAX_HEIGHT):
+                    continue
+
                 for ki, _ in enumerate(axis_K):
                     try:
                         vals = d[hi, 0, ki, 0, :]
@@ -207,7 +211,7 @@ def main():
     # Salvar em HDF5
     # ------------------------------------------------------------------
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = DATA_DIR / f'artificial_{timestamp}.h5'
+    out_path = DATA_DIR / f'artificial_N{N_ARTIFICIAL}_{timestamp}.h5'
 
     with h5py.File(out_path, 'w') as f:
         f.attrs['description'] = (

@@ -30,6 +30,8 @@ import torch
 import torch.nn as nn
 from pathlib import Path
 import joblib
+import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from error_estimation_height_filter import MIN_HEIGHT, MAX_HEIGHT
 
@@ -52,7 +54,77 @@ def extract_dims_from_checkpoint(checkpoint_path):
     hidden_dim = int(parts[-1])
     return latent_dim, hidden_dim
 
-from denoising_autoencoder import DenoisingAutoencoder
+from denoising_autoencoder import DenoisingAutoencoder, split_by_original
+
+def count_chunk_hits(y_true, y_pred, threshold=2.0):
+    """Retorna acertos e erros em chunks de tamanho 2 baseado na diferença absoluta."""
+    hits, misses = 0, 0
+    rows = []
+    n = len(y_true)
+    for i in range(0, n, 2):
+        true_chunk = np.array(y_true[i:i+2])
+        pred_chunk = np.array(y_pred[i:i+2])
+        diff = np.abs(true_chunk - pred_chunk)
+        chunk_hits = np.sum(diff < threshold)
+        chunk_misses = np.sum(diff >= threshold)
+        hits += int(chunk_hits)
+        misses += int(chunk_misses)
+        rows.append({
+            'chunk': i // 2,
+            'n_samples': len(true_chunk),
+            'hits': int(chunk_hits),
+            'misses': int(chunk_misses)
+        })
+    return hits, misses, pd.DataFrame(rows)
+
+import seaborn as sns
+
+def plot_height_predictions(height, y_true, pred_knn, pred_knn_dae, output='height_predictions.png'):
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(pred_knn_dae, bins=30, alpha=0.7, color='blue', label='Preditas (Denoised)')
+    # plt.hist(height, bins=30, alpha=0.6, color='red', label='Distribuição esperada (Reais)')
+    # plt.hist(pred_knn, bins=30, alpha=0.5, color='orange', label='Preditas (KNN)')
+    # plt.xlabel('Altura Predita (mm)')
+    # plt.ylabel('Frequência')
+    # plt.title('Distribuição das Alturas Preditas (Modelo Limpo)')
+    # plt.legend()
+    # plt.show()
+    # plt.tight_layout()
+    # plt.savefig(output, dpi=150)
+    import seaborn as sns
+
+    plt.figure(figsize=(10, 5))
+    sns.kdeplot(height, label='Real', color='red')
+    sns.kdeplot(pred_knn, label='KNN', color='orange')
+    sns.kdeplot(pred_knn_dae, label='Denoised', color='blue')
+
+    plt.xlabel('Altura (mm)')
+    plt.ylabel('Densidade')
+    plt.title('Distribuição das Alturas')
+    plt.legend()
+    plt.show()
+    plt.savefig('kdeplot_' + output, dpi=150)
+
+    fig, axs = plt.subplots(3, 1, figsize=(8, 10), sharex=True)
+
+    axs[0].hist(height, bins=30, color='red')
+    axs[0].set_title('Distribuição Real das Alturas de validação')
+
+    axs[1].hist(pred_knn, bins=30, color='orange')
+    axs[1].set_title('Preditas (KNN)')
+
+    axs[2].hist(pred_knn_dae, bins=30, color='blue')
+    axs[2].set_title('Preditas (Denoised)')
+
+    for ax in axs:
+        ax.set_ylabel('Frequência')
+
+    axs[-1].set_xlabel('Altura (mm)')
+    plt.tight_layout()
+    plt.show()
+    plt.legend()
+    plt.savefig('histogram_' + output, dpi=150)
+
 
 def load_experimental_data(fname):
     """Carrega dados experimentais e retorna lista de (altura, valores_16)."""
@@ -84,6 +156,7 @@ def main():
     parser.add_argument('--dae_model_path', type=str, required=True, help='Caminho para o modelo do denoising autoencoder (.pt)')
     parser.add_argument('--experimental_file', type=str, required=True, help='Caminho para o arquivo experimental HDF5')
     parser.add_argument('--dae_checkpoint', type=str, required=True, help='Caminho para o checkpoint do KNN (contém scaler e modelo)')
+    parser.add_argument('--art_file', type=str, default=None, help='Caminho para o arquivo artificial HDF5 (opcional)')
 
     args = parser.parse_args()
 
@@ -148,6 +221,91 @@ def main():
     mse_direct = mean_squared_error(heights, predicted_heights_direct)
     print(f"MAE direto: {mae_direct:.4f}")
     print(f"MSE direto: {mse_direct:.4f}")
+    plot_height_predictions(heights, heights, predicted_heights_direct, predicted_heights, output='experimental_KNN_only_height_predictions.png')
+   
+    hits_direct, misses_direct, df_direct = count_chunk_hits(heights, predicted_heights_direct, threshold=2.0)
+    hits_dae, misses_dae, df_dae = count_chunk_hits(heights, predicted_heights, threshold=2.0)
+
+    print('\nTabela de acertos (KNN direto) - chunk de 2:')
+    print(df_direct.head())
+    print(f'KNN direto hits <2: {hits_direct}, misses >=2: {misses_direct}, total={len(heights)}')
+    print('\nTabela de acertos (KNN + DAE) - chunk de 2:')
+    print(df_dae.head())
+    print(f'KNN + DAE hits <2: {hits_dae}, misses >=2: {misses_dae}, total={len(heights)}')
+
+    print("Dados para o KNN direto nos dados artificiais gerados (se fornecido):")
+    if args.art_file:
+        from denoising_autoencoder import load_paired_data
+
+        X_noisy, X_clean, y_noisy, X_orig, y_orig, n_art = load_paired_data(Path(args.art_file))
+         # Split e validação (artificial) usando split_by_original, conforme solicitado
+        N_orig = 195
+        n_art = 500
+        test_frac = 0.3
+        val_frac = 0.3
+        train_idx, val_idx, test_idx, _ = split_by_original(N_orig=N_orig, n_art=n_art, test_frac=test_frac, val_frac=val_frac, random_state=42)
+
+        print('\nSplit artificial realizado:')
+        print(f'  N_orig={N_orig}, n_art={n_art}, test_frac={test_frac}, val_frac={val_frac}, random_state=42')
+        print(f'  Índices: train={len(train_idx)}, val={len(val_idx)}, test={len(test_idx)}')
+
+        art_heights = y_noisy[val_idx]
+        art_features = X_noisy[val_idx]
+        art_features_scaled = knn_scaler.transform(art_features)
+        art_predicted_heights = knn_model.predict(art_features_scaled)
+        art_mae = mean_absolute_error(art_heights, art_predicted_heights)
+        art_mse = mean_squared_error(art_heights, art_predicted_heights)
+        print(f"MAE (artificial): {art_mae:.4f}")
+        print(f"MSE (artificial): {art_mse:.4f}")
+        print()
+
+        # Caso passasse pelo DAE
+        art_features_scaled_normalized = scaler.transform(art_features)
+        art_features_tensor = torch.tensor(art_features_scaled_normalized, dtype=torch.float32)
+        with torch.no_grad():
+            art_features_denoised_normalized = dae_model(art_features_tensor).numpy()
+        art_features_denoised = scaler.inverse_transform(art_features_denoised_normalized)
+        art_features_denoised_scaled = knn_scaler.transform(art_features_denoised)
+        art_predicted_heights_dae = knn_model.predict(art_features_denoised_scaled)
+        art_mae_dae = mean_absolute_error(art_heights, art_predicted_heights_dae)
+        art_mse_dae = mean_squared_error(art_heights, art_predicted_heights_dae)
+        print(f"MAE (artificial + DAE): {art_mae_dae:.4f}")
+        print(f"MSE (artificial + DAE): {art_mse_dae:.4f}")
+
+        # Avaliação no conjunto de validação artificial obtido via split_by_original
+        art_val_heights = art_heights
+        art_val_features = art_features
+
+        art_val_pred_direct = knn_model.predict(knn_scaler.transform(art_val_features))
+        art_val_features_scaled_normalized = scaler.transform(art_val_features)
+        art_val_features_tensor = torch.tensor(art_val_features_scaled_normalized, dtype=torch.float32)
+        with torch.no_grad():
+            art_val_denoised_normalized = dae_model(art_val_features_tensor).numpy()
+        art_val_denoised = scaler.inverse_transform(art_val_denoised_normalized)
+        art_val_denoised_scaled = knn_scaler.transform(art_val_denoised)
+        art_val_pred_dae = knn_model.predict(art_val_denoised_scaled)
+
+        print('\nMétricas de validação (artificial val_idx):')
+        print('KNN direto')
+        print('  MAE', mean_absolute_error(art_val_heights, art_val_pred_direct))
+        print('  MSE', mean_squared_error(art_val_heights, art_val_pred_direct))
+        print('KNN + DAE')
+        print('  MAE', mean_absolute_error(art_val_heights, art_val_pred_dae))
+        print('  MSE', mean_squared_error(art_val_heights, art_val_pred_dae))
+
+        plot_height_predictions(art_val_heights, art_val_heights, art_val_pred_direct, art_val_pred_dae,
+                                output='artificial_validation_height_predictions.png')
+
+        hits_direct, misses_direct, df_direct = count_chunk_hits(art_val_heights, art_val_pred_direct, threshold=2.0)
+        hits_dae, misses_dae, df_dae = count_chunk_hits(art_val_heights, art_val_pred_dae, threshold=2.0)
+
+        print('\nTabela de acertos (KNN direto) - chunk de 2:')
+        print(df_direct.head())
+        print(f'KNN direto hits <2: {hits_direct}, misses >=2: {misses_direct}, total={len(art_val_heights)}')
+
+        print('\nTabela de acertos (KNN + DAE) - chunk de 2:')
+        print(df_dae.head())
+        print(f'KNN + DAE hits <2: {hits_dae}, misses >=2: {misses_dae}, total={len(art_val_heights)}')
 
 if __name__ == '__main__':
     main()

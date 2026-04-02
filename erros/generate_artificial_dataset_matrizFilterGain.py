@@ -57,11 +57,17 @@ GAIN_STD = 0.1
 #     [0.6937044 , 0.36402515, 0.21369271, 0.2406836 ],
 # ], dtype=np.float64)
 
+# GAIN_MEAN_MATRIX = np.array([
+#     [0.73799924, 1.28409673, 1.29267225, 0.96172604],
+#     [1.49915294, 0.83210729, 1.94994793, 0.73006332],
+#     [1.62797488, 2.59592461, 1.11130719, 1.42609107],
+#     [1.54227595, 1.68133359, 2.57544559, 1.31702773],
+# ], dtype=np.float64)
 GAIN_MEAN_MATRIX = np.array([
-    [0.73799924, 1.28409673, 1.29267225, 0.96172604],
-    [1.49915294, 0.83210729, 1.94994793, 0.73006332],
-    [1.62797488, 2.59592461, 1.11130719, 1.42609107],
-    [1.54227595, 1.68133359, 2.57544559, 1.31702773],
+    [1.0, 1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0, 1.0],
 ], dtype=np.float64)
 
 GAIN_STD_MATRIX = np.array([
@@ -290,7 +296,7 @@ def main():
     # Salvar em HDF5
     # ------------------------------------------------------------------
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = DATA_DIR / f'artificial_MATRIX_inversed_N{N_ARTIFICIAL}_{timestamp}.h5'
+    out_path = DATA_DIR / f'artificial_MATRIX_noise_only_N{N_ARTIFICIAL}.h5'
 
     with h5py.File(out_path, 'w') as f:
         f.attrs['description'] = (

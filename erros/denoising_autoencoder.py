@@ -72,10 +72,10 @@ LATENT_DIM = 8
 
 # Treino
 BATCH_SIZE  = 64
-EPOCHS      = 600 #300
+EPOCHS      = 300 #300
 LR          = 1e-3
 WEIGHT_DECAY = 1e-5
-PATIENCE    = 60        # early stopping
+PATIENCE    = 30        # early stopping
 
 # Divisão (sobre índices originais)
 TEST_FRAC = 0.15
@@ -472,8 +472,8 @@ def main():
     args = parser.parse_args()
 
     ART_FILE = Path(args.art_file)
-    CHECKPOINT_OUT = Path(f'dae_checkpoint_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.joblib')
-    MODEL_OUT = Path(f'dae_model_out_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.pt')
+    CHECKPOINT_OUT = Path(f'dae_checkpoint_inverted_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.joblib')
+    MODEL_OUT = Path(f'dae_model_out_inverted_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.pt')
 
     print(f'Dispositivo: {DEVICE}')
     print(f'Args artificial dataset: {ART_FILE}')

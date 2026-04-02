@@ -106,8 +106,8 @@ def main():
             # Calcular ganhos: K = M / \hat{M}
             # Evitar divisão por zero
             with np.errstate(divide='ignore', invalid='ignore'):
-                K = M / M_hat
-                K = np.where(M_hat != 0, K, 0)  # Set to 0 where M_hat is 0
+                K = M_hat / M
+                K = np.where(M != 0, K, 0)  # Set to 0 where M_hat is 0
 
             # Flatten e adicionar
             all_gains.extend(K.flatten())

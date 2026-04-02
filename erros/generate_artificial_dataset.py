@@ -36,8 +36,8 @@ N_ARTIFICIAL = 1000
 
 # Parâmetros da distribuição de ganhos
 GAIN_DISTRIBUTION = 'normal'  # opções: 'normal', 'uniform', 'lognormal'
-GAIN_MEAN = 1.0
-GAIN_STD = 0.1
+GAIN_MEAN = 1.018019
+GAIN_STD = 0.749247
 
 #Média global dos ganhos: 0.947398
 #Desvio padrão global dos ganhos: 0.648466
@@ -211,7 +211,7 @@ def main():
     # Salvar em HDF5
     # ------------------------------------------------------------------
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = DATA_DIR / f'artificial_N{N_ARTIFICIAL}_{timestamp}.h5'
+    out_path = DATA_DIR / f'artificial_NRemake{N_ARTIFICIAL}_{timestamp}.h5'
 
     with h5py.File(out_path, 'w') as f:
         f.attrs['description'] = (

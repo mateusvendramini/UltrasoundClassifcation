@@ -249,8 +249,8 @@ def main():
         print(f'  N_orig={N_orig}, n_art={n_art}, test_frac={test_frac}, val_frac={val_frac}, random_state=42')
         print(f'  Índices: train={len(train_idx)}, val={len(val_idx)}, test={len(test_idx)}')
 
-        art_heights = y_noisy[val_idx]
-        art_features = X_noisy[val_idx]
+        art_heights = y_noisy[val_idx] # y_noisy#
+        art_features = X_noisy[val_idx] #X_noisy
         art_features_scaled = knn_scaler.transform(art_features)
         art_predicted_heights = knn_model.predict(art_features_scaled)
         art_mae = mean_absolute_error(art_heights, art_predicted_heights)

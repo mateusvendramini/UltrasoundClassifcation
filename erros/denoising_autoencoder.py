@@ -53,6 +53,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 import joblib
+import time
 from pathlib import Path
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -72,17 +73,17 @@ LATENT_DIM = 8
 
 # Treino
 BATCH_SIZE  = 64
-EPOCHS      = 300 #300
+EPOCHS      = 600 #300
 LR          = 1e-3
 WEIGHT_DECAY = 1e-5
-PATIENCE    = 30        # early stopping
+PATIENCE    = 60        # early stopping
 
 # Divisão (sobre índices originais)
 TEST_FRAC = 0.15
 VAL_FRAC  = 0.15
 
 RANDOM_STATE = 42
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+DEVICE = None  # set from --device arg in main()
 
 
 # ---------------------------------------------------------------------------
@@ -223,14 +224,14 @@ class DenoisingAutoencoder(nn.Module):
         print(f'Inicializando DenoisingAutoencoder com input_dim={input_dim}, latent_dim={latent_dim}, hidden_dim={hidden_dim}')
         self.encoder = nn.Sequential(
             nn.Linear(input_dim, hidden_dim),
-            nn.BatchNorm1d(hidden_dim),
+            nn.LayerNorm(hidden_dim),
             nn.GELU(),
             nn.Linear(hidden_dim, latent_dim),
         )
 
         self.decoder = nn.Sequential(
             nn.Linear(latent_dim, hidden_dim),
-            nn.BatchNorm1d(hidden_dim),
+            nn.LayerNorm(hidden_dim),
             nn.GELU(),
             nn.Linear(hidden_dim, input_dim),
         )
@@ -258,7 +259,7 @@ class DenoisingAutoencoder(nn.Module):
 
 def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, device, model_out_path):
     model = model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
+    optimizer = torch.optim.RMSprop(model.parameters(), lr=lr, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode='min', patience=patience // 3, factor=0.5
     )
@@ -266,9 +267,12 @@ def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, d
 
     best_val_loss  = float('inf')
     patience_count = 0
-    history = {'train': [], 'val': []}
+    history = {'train': [], 'val': [], 'epoch_time': []}
+    t_total_start = time.perf_counter()
 
     for epoch in range(1, epochs + 1):
+        t_epoch = time.perf_counter()
+
         # --- treino ---
         model.train()
         total_loss = 0.0
@@ -294,8 +298,10 @@ def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, d
                 total_val += criterion(x_hat, x_clean).item() * x_noisy.size(0)
         val_loss = total_val / len(val_loader.dataset)
 
+        epoch_secs = time.perf_counter() - t_epoch
         history['train'].append(train_loss)
         history['val'].append(val_loss)
+        history['epoch_time'].append(epoch_secs)
         scheduler.step(val_loss)
 
         if val_loss < best_val_loss:
@@ -307,13 +313,18 @@ def train(model, train_loader, val_loader, epochs, lr, weight_decay, patience, d
 
         if epoch % 10 == 0 or patience_count == 0:
             print(f'Epoch {epoch:4d}/{epochs}  '
-                  f'train={train_loss:.7f}  val={val_loss:.7f}'
+                  f'train={train_loss:.7f}  val={val_loss:.7f}  '
+                  f't={epoch_secs:.2f}s'
                   + (' ← melhor' if patience_count == 0 else ''))
 
         if patience_count >= patience:
             print(f'\nEarly stopping na época {epoch} '
                   f'(melhor val_loss={best_val_loss:.7f})')
             break
+
+    total_secs = time.perf_counter() - t_total_start
+    avg_secs   = sum(history['epoch_time']) / len(history['epoch_time'])
+    print(f'\nTempo total: {total_secs:.1f}s  |  média por época: {avg_secs:.3f}s  |  device: {device}')
 
     return history
 
@@ -467,18 +478,38 @@ def plot_error_distribution(results):
 def main():
     parser = argparse.ArgumentParser(description='Train Denoising Autoencoder')
     parser.add_argument('--art_file', required=True, help='Path to the artificial dataset HDF5 file')
-    parser.add_argument(('--hidden_dim'), type=int, default=32, help='Hidden layer dimension (default: 32)')
-    parser.add_argument(('--latent_dim'), type=int, default=8, help='Latent space dimension (default: 8)')
+    parser.add_argument('--hidden_dim', type=int, default=32, help='Hidden layer dimension (default: 32)')
+    parser.add_argument('--latent_dim', type=int, default=8, help='Latent space dimension (default: 8)')
+    parser.add_argument('--device', default='auto', choices=['auto', 'cpu', 'dml'],
+                        help='Device: auto (dml if available, else cpu), cpu, dml (default: auto)')
+    parser.add_argument('--bench_epochs', type=int, default=None,
+                        help='Run only N epochs then stop (for benchmarking, overrides early stopping)')
     args = parser.parse_args()
 
+    # resolve device
+    global DEVICE
+    if args.device == 'dml':
+        import torch_directml as _dml
+        DEVICE = _dml.device()
+    elif args.device == 'cpu':
+        DEVICE = torch.device('cpu')
+    else:
+        try:
+            import torch_directml as _dml
+            DEVICE = _dml.device() if _dml.device_count() > 0 else torch.device('cpu')
+        except ImportError:
+            DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
     ART_FILE = Path(args.art_file)
-    CHECKPOINT_OUT = Path(f'dae_checkpoint_inverted_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.joblib')
-    MODEL_OUT = Path(f'dae_model_out_inverted_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.pt')
+    CHECKPOINT_OUT = Path(f'dae_checkpoint_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.joblib')
+    MODEL_OUT = Path(f'dae_model_out_{ART_FILE.stem}_{args.latent_dim}_{args.hidden_dim}.pt')
 
     print(f'Dispositivo: {DEVICE}')
     print(f'Args artificial dataset: {ART_FILE}')
     print(f'Args hidden dimension: {args.hidden_dim}')
     print(f'Args latent dimension: {args.latent_dim}')
+    if args.bench_epochs:
+        print(f'Benchmark mode: {args.bench_epochs} épocas fixas')
     print()
 
     # 1. Dados e pares de correspondência
@@ -529,14 +560,19 @@ def main():
     print()
 
     # 6. Treino
+    epochs_to_run = args.bench_epochs if args.bench_epochs else EPOCHS
+    patience_to_use = epochs_to_run + 1 if args.bench_epochs else PATIENCE
     print('Iniciando treino...')
     history = train(
         model, train_loader, val_loader,
-        EPOCHS, LR, WEIGHT_DECAY, PATIENCE, DEVICE, MODEL_OUT
+        epochs_to_run, LR, WEIGHT_DECAY, patience_to_use, DEVICE, MODEL_OUT
     )
 
+    if args.bench_epochs:
+        return  # skip evaluation/checkpoint when benchmarking
+
     # 7. Carrega o melhor modelo e avalia no teste
-    model.load_state_dict(torch.load(MODEL_OUT, map_location=DEVICE))
+    model.load_state_dict(torch.load(MODEL_OUT, map_location='cpu'))
     model.to(DEVICE)
 
     print()
